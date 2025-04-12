@@ -2,5 +2,7 @@
 !/.vscode/extensions.json
 !/.vscode/settings.json
 /vendor/
+/vendor-bin/**/vendor/*
+!/vendor-bin/**/composer.json
 /auth.json
 /composer.lock
