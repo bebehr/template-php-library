@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    // PHP Intelephense
+    "bmewburn.vscode-intelephense-client",
+    // EditorConfig for VS Code
+    "editorconfig.editorconfig"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  // Let PHP Intelephense plugin handle this.
+  "php.format.enable": false,
+  "php.suggest.basic": false,
+  "php.validate.enable": false
+}
