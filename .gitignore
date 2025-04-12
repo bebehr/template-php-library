@@ -1,0 +1,6 @@
+/.vscode/*
+!/.vscode/extensions.json
+!/.vscode/settings.json
+/vendor/
+/auth.json
+/composer.lock

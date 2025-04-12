@@ -1,0 +1,28 @@
+# Auto detect text files and enforce LF normalization
+* text=auto eol=lf
+
+# Source code (PHP files)
+*.php diff=php
+
+# Documentation
+*.md diff=markdown
+
+# Configs
+*.lock -diff
+
+# Archives
+*.phar binary
+
+# Fix syntax highlighting on GitHub to allow comments
+.vscode/*.json linguist-language=JSON-with-Comments
+
+# Generated files
+composer.lock linguist-generated=true
+
+# Exclude files from exporting
+.vscode/*      export-ignore
+.editorconfig  export-ignore
+.gitattributes export-ignore
+.gitignore     export-ignore
+composer.lock  export-ignore
+README.md      export-ignore
