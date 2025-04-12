@@ -1,0 +1,52 @@
+{
+  "name": "bebehr/template-php-library",
+  "description": "Starter template for generating new PHP library repositories",
+  "license": "MIT",
+  "type": "library",
+  "keywords": [
+    "library",
+    "template"
+  ],
+  "authors": [
+    {
+      "name": "bebehr",
+      "homepage": "https://github.com/bebehr"
+    }
+  ],
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "bamarni/composer-bin-plugin": "^1.8",
+    "ergebnis/composer-normalize": "^2.46",
+    "phpunit/phpunit": "^10.5"
+  },
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Bebehr\\TemplatePhpLibrary\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Bebehr\\TemplatePhpLibrary\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "bamarni/composer-bin-plugin": true,
+      "ergebnis/composer-normalize": true
+    },
+    "platform": {
+      "php": "8.1"
+    },
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "extra": {
+    "bamarni-bin": {
+      "bin-links": true,
+      "forward-command": false
+    }
+  }
+}

@@ -2,6 +2,8 @@
   "recommendations": [
     // PHP Intelephense
     "bmewburn.vscode-intelephense-client",
+    // Composer
+    "devsense.composer-php-vscode",
     // EditorConfig for VS Code
     "editorconfig.editorconfig"
   ]
