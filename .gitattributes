@@ -22,10 +22,13 @@ composer.lock               linguist-generated=true
 
 # Exclude files from exporting
 .vscode/*                   export-ignore
+tests/*                     export-ignore
+var/*                       export-ignore
 vendor-bin/**/composer.lock export-ignore
 .editorconfig               export-ignore
 .gitattributes              export-ignore
 .github                     export-ignore
 .gitignore                  export-ignore
 composer.lock               export-ignore
+phpunit.xml                 export-ignore
 README.md                   export-ignore

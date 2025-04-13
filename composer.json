@@ -48,6 +48,7 @@
     }
   },
   "scripts": {
-    "normalize": "composer bin composer-normalize normalize ../../composer.json"
+    "normalize": "composer bin composer-normalize normalize ../../composer.json",
+    "test": "vendor/bin/phpunit"
   }
 }

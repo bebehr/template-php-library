@@ -1,6 +1,8 @@
 /.vscode/*
 !/.vscode/extensions.json
 !/.vscode/settings.json
+/var/cache/*
+!/var/cache/.gitignore
 /vendor/
 /vendor-bin/**/vendor/
 /vendor-bin/**/composer.lock

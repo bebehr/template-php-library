@@ -7,6 +7,9 @@ namespace Bebehr\TemplatePhpLibrary\Tests\Example;
 use Bebehr\TemplatePhpLibrary\Example\Greeter;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers Greeter
+ */
 final class GreeterTest extends TestCase
 {
     public function testGreetsWithName(): void
