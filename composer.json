@@ -50,7 +50,7 @@
   "scripts": {
     "lint": "vendor-bin/phplint/vendor/bin/phplint",
     "normalize": "composer bin composer-normalize normalize ../../composer.json",
-    "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan",
+    "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse",
     "psalm": [
       "vendor-bin/psalm/vendor/bin/psalm --no-cache",
       "vendor-bin/psalm/vendor/bin/psalm --taint-analysis --no-cache"
