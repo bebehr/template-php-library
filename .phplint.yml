@@ -1,0 +1,11 @@
+path: .
+exclude:
+  - .vscode
+  - var
+  - vendor
+  - vendor-bin
+extensions:
+  - php
+warning: true
+jobs: 2
+cache-dir: var/cache/.phplint.cache

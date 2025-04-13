@@ -48,6 +48,7 @@
     }
   },
   "scripts": {
+    "lint": "vendor-bin/phplint/vendor/bin/phplint",
     "normalize": "composer bin composer-normalize normalize ../../composer.json",
     "test": "vendor/bin/phpunit"
   }
