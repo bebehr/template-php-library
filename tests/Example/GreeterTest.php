@@ -8,7 +8,7 @@ use Bebehr\TemplatePhpLibrary\Example\Greeter;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers Greeter
+ * @covers Bebehr\TemplatePhpLibrary\Example\Greeter
  */
 final class GreeterTest extends TestCase
 {
@@ -18,6 +18,6 @@ final class GreeterTest extends TestCase
 
         $greeting = $greeter->greet('Alice');
 
-        $this->assertSame('Hello, Alice!', $greeting);
+        self::assertSame('Hello, Alice!', $greeting);
     }
 }
