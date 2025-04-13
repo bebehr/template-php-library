@@ -14,7 +14,7 @@ final class GreeterTest extends TestCase
 {
     public function testGreetsWithName(): void
     {
-        $greeter = new Greeter;
+        $greeter = new Greeter();
 
         $greeting = $greeter->greet('Alice');
 
