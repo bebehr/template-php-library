@@ -1,0 +1,14 @@
+parameters:
+  level: max
+  fileExtensions:
+    - php
+  paths:
+    - .
+  excludePaths:
+    analyse:
+      - vendor
+    analyseAndScan:
+      - .vscode
+      - var
+      - vendor-bin
+  tmpDir: var/cache/phpstan

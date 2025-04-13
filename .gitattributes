@@ -31,6 +31,7 @@ vendor-bin/**/composer.lock export-ignore
 .gitignore                  export-ignore
 .phplint.yml                export-ignore
 composer.lock               export-ignore
+phpstan.neon                export-ignore
 phpunit.xml                 export-ignore
 psalm.xml                   export-ignore
 README.md                   export-ignore
