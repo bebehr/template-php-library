@@ -48,8 +48,10 @@
     }
   },
   "scripts": {
+    "fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff -v",
     "lint": "vendor-bin/phplint/vendor/bin/phplint",
     "normalize": "composer bin composer-normalize normalize ../../composer.json",
+    "php-cs-fixer": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check --diff -v",
     "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse",
     "psalm": [
       "vendor-bin/psalm/vendor/bin/psalm --no-cache",
