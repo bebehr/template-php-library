@@ -15,6 +15,7 @@
       <directory name="var"/>
       <directory name="vendor"/>
       <directory name="vendor-bin"/>
+      <file name=".php-cs-fixer.php"/>
     </ignoreFiles>
   </projectFiles>
 
