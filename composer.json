@@ -48,15 +48,30 @@
     }
   },
   "scripts": {
-    "fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff -v",
-    "lint": "vendor-bin/phplint/vendor/bin/phplint",
+    "analyse": [
+      "@phpstan",
+      "@psalm"
+    ],
+    "analyze": [
+      "@analyse"
+    ],
+    "fix": [
+      "@php-cs-fixer:fix"
+    ],
+    "lint": [
+      "@phplint",
+      "@php-cs-fixer:check"
+    ],
     "normalize": "composer bin composer-normalize normalize ../../composer.json",
-    "php-cs-fixer": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check --diff -v",
+    "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check --diff -v",
+    "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff -v",
+    "phplint": "vendor-bin/phplint/vendor/bin/phplint",
     "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse",
+    "phpunit": "vendor/bin/phpunit",
     "psalm": [
       "vendor-bin/psalm/vendor/bin/psalm --no-cache",
       "vendor-bin/psalm/vendor/bin/psalm --taint-analysis --no-cache"
     ],
-    "test": "vendor/bin/phpunit"
+    "test": "@phpunit"
   }
 }
