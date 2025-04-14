@@ -21,6 +21,10 @@ $rules = [
         'annotations' => ['expectedDeprecation'],
     ],
     'modernize_strpos' => true,
+    'ordered_imports' => [
+        'imports_order' => ['class', 'function', 'const'],
+        'sort_algorithm' => 'alpha',
+    ],
 ];
 
 return (new Config())

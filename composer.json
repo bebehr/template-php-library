@@ -53,15 +53,19 @@
       "@psalm"
     ],
     "fix": [
-      "@php-cs-fixer:fix"
+      "@php-cs-fixer:fix",
+      "@phpcbf"
     ],
     "lint": [
       "@phplint",
-      "@php-cs-fixer:check"
+      "@php-cs-fixer",
+      "@phpcs"
     ],
     "normalize": "composer bin composer-normalize normalize ../../composer.json",
-    "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -v --diff",
+    "php-cs-fixer": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -v --diff",
     "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --diff",
+    "phpcbf": "vendor-bin/phpcs/vendor/bin/phpcbf",
+    "phpcs": "vendor-bin/phpcs/vendor/bin/phpcs",
     "phplint": "vendor-bin/phplint/vendor/bin/phplint",
     "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse",
     "phpunit": "vendor/bin/phpunit",
