@@ -52,9 +52,6 @@
       "@phpstan",
       "@psalm"
     ],
-    "analyze": [
-      "@analyse"
-    ],
     "fix": [
       "@php-cs-fixer:fix"
     ],
@@ -63,14 +60,14 @@
       "@php-cs-fixer:check"
     ],
     "normalize": "composer bin composer-normalize normalize ../../composer.json",
-    "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check --diff -v",
-    "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff -v",
+    "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -v --diff",
+    "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --diff",
     "phplint": "vendor-bin/phplint/vendor/bin/phplint",
     "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse",
     "phpunit": "vendor/bin/phpunit",
     "psalm": [
-      "vendor-bin/psalm/vendor/bin/psalm --no-cache",
-      "vendor-bin/psalm/vendor/bin/psalm --taint-analysis --no-cache"
+      "vendor-bin/psalm/vendor/bin/psalm",
+      "vendor-bin/psalm/vendor/bin/psalm --taint-analysis"
     ],
     "test": "@phpunit"
   }
