@@ -6,15 +6,10 @@ use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 
 $finder = (new Finder())
+    ->in(__DIR__)
+    ->exclude(['.vscode', 'var', 'vendor', 'vendor-bin'])
     ->ignoreDotFiles(false)
-    ->ignoreVCSIgnored(true)
-    ->exclude([
-        '.vscode',
-        'var',
-        'vendor',
-        'vendor-bin',
-    ])
-    ->in(__DIR__);
+    ->ignoreVCSIgnored(true);
 
 $rules = [
     '@PHP80Migration:risky' => true,
@@ -22,6 +17,10 @@ $rules = [
     '@PHPUnit100Migration:risky' => true,
     '@PER-CS' => true,
     '@PER-CS:risky' => true,
+    'general_phpdoc_annotation_remove' => [
+        'annotations' => ['expectedDeprecation'],
+    ],
+    'modernize_strpos' => true,
 ];
 
 return (new Config())
