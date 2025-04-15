@@ -52,7 +52,8 @@
       "@phpcpd",
       "@phpmd",
       "@phpstan",
-      "@psalm"
+      "@psalm",
+      "@phpinsights"
     ],
     "fix": [
       "@php-cs-fixer:fix",
@@ -63,30 +64,31 @@
       "@php-cs-fixer:check",
       "@phpcs"
     ],
-    "metrics" : [
+    "metrics": [
       "@phploc",
       "@pdepend",
       "@phpmetrics"
     ],
     "normalize": "composer bin composer-normalize normalize ../../composer.json",
+    "pdepend": "vendor-bin/pdepend/vendor/bin/pdepend --summary-xml=var/reports/pdepend.summary.xml --jdepend-chart=var/reports/pdepend.chart.svg --overview-pyramid=var/reports/pdepend.overview.svg src",
     "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -v --diff",
     "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --diff",
     "phpcbf": "vendor-bin/phpcs/vendor/bin/phpcbf",
     "phpcpd": "vendor-bin/phpcpd/vendor/bin/phpcpd --fuzzy src tests ",
     "phpcs": "vendor-bin/phpcs/vendor/bin/phpcs",
-    "pdepend": "vendor-bin/pdepend/vendor/bin/pdepend --summary-xml=var/reports/pdepend.summary.xml --jdepend-chart=var/reports/pdepend.chart.svg --overview-pyramid=var/reports/pdepend.overview.svg src",
+    "phpinsights": "vendor-bin/phpinsights/vendor/bin/phpinsights --config-path=phpinsights.php --no-interaction",
     "phplint": "vendor-bin/phplint/vendor/bin/phplint",
     "phploc": "vendor-bin/phploc/vendor/bin/phploc src --log-json var/reports/phploc.json",
     "phpmd": [
       "@phpmd:html",
       "@phpmd:ansi"
     ],
+    "phpmd:ansi": "vendor-bin/phpmd/vendor/bin/phpmd . ansi phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content",
+    "phpmd:html": "vendor-bin/phpmd/vendor/bin/phpmd . html phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --report-file var/reports/phpmd.html --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content --ignore-errors-on-exit --ignore-violations-on-exit",
     "phpmetrics": [
       "@phpunit",
       "vendor-bin/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json"
     ],
-    "phpmd:ansi": "vendor-bin/phpmd/vendor/bin/phpmd . ansi phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content",
-    "phpmd:html": "vendor-bin/phpmd/vendor/bin/phpmd . html phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --report-file var/reports/phpmd.html --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content --ignore-errors-on-exit --ignore-violations-on-exit",
     "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse",
     "phpunit": "vendor/bin/phpunit",
     "psalm": [
