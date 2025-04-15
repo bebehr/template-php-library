@@ -50,6 +50,7 @@
   "scripts": {
     "analyse": [
       "@phpcpd",
+      "@phpmd",
       "@phpstan",
       "@psalm"
     ],
@@ -59,16 +60,22 @@
     ],
     "lint": [
       "@phplint",
-      "@php-cs-fixer",
+      "@php-cs-fixer:check",
       "@phpcs"
     ],
     "normalize": "composer bin composer-normalize normalize ../../composer.json",
-    "php-cs-fixer": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -v --diff",
+    "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -v --diff",
     "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --diff",
     "phpcbf": "vendor-bin/phpcs/vendor/bin/phpcbf",
     "phpcpd": "vendor-bin/phpcpd/vendor/bin/phpcpd --fuzzy src tests ",
     "phpcs": "vendor-bin/phpcs/vendor/bin/phpcs",
     "phplint": "vendor-bin/phplint/vendor/bin/phplint",
+    "phpmd": [
+      "@phpmd:html",
+      "@phpmd:ansi"
+    ],
+    "phpmd:ansi": "vendor-bin/phpmd/vendor/bin/phpmd . ansi phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content",
+    "phpmd:html": "vendor-bin/phpmd/vendor/bin/phpmd . html phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --report-file var/reports/phpmd.html --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content --ignore-errors-on-exit --ignore-violations-on-exit",
     "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse",
     "phpunit": "vendor/bin/phpunit",
     "psalm": [
