@@ -1,0 +1,123 @@
+{
+  "config": {
+    "fail-on-first-error": false
+  },
+  "commit-msg": {
+    "enabled": true,
+    "actions": [
+      {
+        "action": "\\CaptainHook\\App\\Hook\\Message\\Action\\Beams",
+        "options": {
+          "subjectLength": 50,
+          "bodyLineLength": 72
+        }
+      }
+    ]
+  },
+  "pre-push": {
+    "enabled": true,
+    "actions": [
+      {
+        "action": "composer validate"
+      },
+      {
+        "action": "composer normalize:check"
+      },
+      {
+        "action": "composer test"
+      }
+    ]
+  },
+  "pre-commit": {
+    "enabled": true,
+    "actions": [
+      {
+        "action": "vendor-bin/phplint/vendor/bin/phplint {$STAGED_FILES|of-type:php|separated-by: }",
+        "conditions": [
+          {
+            "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
+            "args": ["php"]
+          }
+        ]
+      },
+      {
+        "action": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -v --config=.php-cs-fixer.php --diff {$STAGED_FILES|of-type:php|separated-by: }",
+        "conditions": [
+          {
+            "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
+            "args": ["php"]
+          }
+        ]
+      },
+      {
+        "action": "vendor-bin/phpcs/vendor/bin/phpcs {$STAGED_FILES|of-type:php|separated-by: }",
+        "conditions": [
+          {
+            "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
+            "args": ["php"]
+          }
+        ]
+      },
+      {
+        "action": "vendor-bin/phpmd/vendor/bin/phpmd {$STAGED_FILES|of-type:php|separated-by:,} ansi phpmd.xml --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content",
+        "conditions": [
+          {
+            "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
+            "args": ["php"]
+          }
+        ]
+      },
+      {
+        "action": "vendor-bin/phpstan/vendor/bin/phpstan analyse {$STAGED_FILES|of-type:php|separated-by: }",
+        "conditions": [
+          {
+            "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
+            "args": ["php"]
+          }
+        ]
+      },
+      {
+        "action": "vendor-bin/psalm/vendor/bin/psalm {$STAGED_FILES|of-type:php|separated-by: }",
+        "conditions": [
+          {
+            "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
+            "args": ["php"]
+          }
+        ]
+      },
+      {
+        "action": "vendor-bin/phpinsights/vendor/bin/phpinsights analyse --config-path=phpinsights.php --no-interaction {$STAGED_FILES|of-type:php|separated-by: }",
+        "conditions": [
+          {
+            "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
+            "args": ["php"]
+          }
+        ]
+      }
+    ]
+  },
+  "prepare-commit-msg": {
+    "enabled": false,
+    "actions": []
+  },
+  "post-commit": {
+    "enabled": false,
+    "actions": []
+  },
+  "post-merge": {
+    "enabled": false,
+    "actions": []
+  },
+  "post-checkout": {
+    "enabled": false,
+    "actions": []
+  },
+  "post-rewrite": {
+    "enabled": false,
+    "actions": []
+  },
+  "post-change": {
+    "enabled": false,
+    "actions": []
+  }
+}

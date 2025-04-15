@@ -18,6 +18,7 @@
   },
   "require-dev": {
     "bamarni/composer-bin-plugin": "^1.8",
+    "captainhook/captainhook": "^5.25",
     "phpunit/phpunit": "^10.5"
   },
   "minimum-stability": "stable",
@@ -48,6 +49,9 @@
     }
   },
   "scripts": {
+    "post-autoload-dump": [
+      "if [ -e vendor/bin/captainhook ]; then vendor/bin/captainhook install -f -s; fi"
+    ],
     "analyse": [
       "@phpcpd",
       "@phpmd",
@@ -55,7 +59,13 @@
       "@psalm",
       "@phpinsights"
     ],
+    "build": [
+      "composer validate",
+      "@normalize:check",
+      "composer audit"
+    ],
     "fix": [
+      "@normalize:fix",
       "@php-cs-fixer:fix",
       "@phpcbf"
     ],
@@ -69,14 +79,15 @@
       "@pdepend",
       "@phpmetrics"
     ],
-    "normalize": "composer bin composer-normalize normalize ../../composer.json",
+    "normalize:check": "composer bin composer-normalize normalize --diff --dry-run --indent-size=2 --indent-style=space ../../composer.json",
+    "normalize:fix": "composer bin composer-normalize normalize --diff --indent-size=2 --indent-style=space ../../composer.json",
     "pdepend": "vendor-bin/pdepend/vendor/bin/pdepend --summary-xml=var/reports/pdepend.summary.xml --jdepend-chart=var/reports/pdepend.chart.svg --overview-pyramid=var/reports/pdepend.overview.svg src",
     "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -v --diff",
     "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --diff",
     "phpcbf": "vendor-bin/phpcs/vendor/bin/phpcbf",
-    "phpcpd": "vendor-bin/phpcpd/vendor/bin/phpcpd --fuzzy src tests ",
+    "phpcpd": "vendor-bin/phpcpd/vendor/bin/phpcpd --fuzzy src tests",
     "phpcs": "vendor-bin/phpcs/vendor/bin/phpcs",
-    "phpinsights": "vendor-bin/phpinsights/vendor/bin/phpinsights --config-path=phpinsights.php --no-interaction",
+    "phpinsights": "vendor-bin/phpinsights/vendor/bin/phpinsights analyse --config-path=phpinsights.php --no-interaction",
     "phplint": "vendor-bin/phplint/vendor/bin/phplint",
     "phploc": "vendor-bin/phploc/vendor/bin/phploc src --log-json var/reports/phploc.json",
     "phpmd": [
@@ -85,10 +96,7 @@
     ],
     "phpmd:ansi": "vendor-bin/phpmd/vendor/bin/phpmd . ansi phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content",
     "phpmd:html": "vendor-bin/phpmd/vendor/bin/phpmd . html phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --report-file var/reports/phpmd.html --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content --ignore-errors-on-exit --ignore-violations-on-exit",
-    "phpmetrics": [
-      "@phpunit",
-      "vendor-bin/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json"
-    ],
+    "phpmetrics": "vendor-bin/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json",
     "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse",
     "phpunit": "vendor/bin/phpunit",
     "psalm": [
