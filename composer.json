@@ -65,7 +65,8 @@
     ],
     "metrics" : [
       "@phploc",
-      "@pdepend"
+      "@pdepend",
+      "@phpmetrics"
     ],
     "normalize": "composer bin composer-normalize normalize ../../composer.json",
     "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -v --diff",
@@ -79,6 +80,10 @@
     "phpmd": [
       "@phpmd:html",
       "@phpmd:ansi"
+    ],
+    "phpmetrics": [
+      "@phpunit",
+      "vendor-bin/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json"
     ],
     "phpmd:ansi": "vendor-bin/phpmd/vendor/bin/phpmd . ansi phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content",
     "phpmd:html": "vendor-bin/phpmd/vendor/bin/phpmd . html phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --report-file var/reports/phpmd.html --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content --ignore-errors-on-exit --ignore-violations-on-exit",

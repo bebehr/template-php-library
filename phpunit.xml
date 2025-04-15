@@ -22,4 +22,9 @@
       <directory>src</directory>
     </include>
   </source>
+
+  <logging>
+    <junit outputFile="var/reports/phpunit/junit.xml"/>
+    <testdoxHtml outputFile="var/reports/phpunit/testdox.html"/>
+  </logging>
 </phpunit>
