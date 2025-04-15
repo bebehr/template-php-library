@@ -63,6 +63,9 @@
       "@php-cs-fixer:check",
       "@phpcs"
     ],
+    "metrics" : [
+      "@phploc"
+    ],
     "normalize": "composer bin composer-normalize normalize ../../composer.json",
     "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -v --diff",
     "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --diff",
@@ -70,6 +73,7 @@
     "phpcpd": "vendor-bin/phpcpd/vendor/bin/phpcpd --fuzzy src tests ",
     "phpcs": "vendor-bin/phpcs/vendor/bin/phpcs",
     "phplint": "vendor-bin/phplint/vendor/bin/phplint",
+    "phploc": "vendor-bin/phploc/vendor/bin/phploc src --log-json var/reports/phploc.json",
     "phpmd": [
       "@phpmd:html",
       "@phpmd:ansi"
