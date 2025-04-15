@@ -64,7 +64,8 @@
       "@phpcs"
     ],
     "metrics" : [
-      "@phploc"
+      "@phploc",
+      "@pdepend"
     ],
     "normalize": "composer bin composer-normalize normalize ../../composer.json",
     "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -v --diff",
@@ -72,6 +73,7 @@
     "phpcbf": "vendor-bin/phpcs/vendor/bin/phpcbf",
     "phpcpd": "vendor-bin/phpcpd/vendor/bin/phpcpd --fuzzy src tests ",
     "phpcs": "vendor-bin/phpcs/vendor/bin/phpcs",
+    "pdepend": "vendor-bin/pdepend/vendor/bin/pdepend --summary-xml=var/reports/pdepend.summary.xml --jdepend-chart=var/reports/pdepend.chart.svg --overview-pyramid=var/reports/pdepend.overview.svg src",
     "phplint": "vendor-bin/phplint/vendor/bin/phplint",
     "phploc": "vendor-bin/phploc/vendor/bin/phploc src --log-json var/reports/phploc.json",
     "phpmd": [
