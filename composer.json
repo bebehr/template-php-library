@@ -87,7 +87,7 @@
     "phpcbf": "vendor-bin/phpcs/vendor/bin/phpcbf",
     "phpcpd": "vendor-bin/phpcpd/vendor/bin/phpcpd --fuzzy src tests",
     "phpcs": "vendor-bin/phpcs/vendor/bin/phpcs",
-    "phpinsights": "vendor-bin/phpinsights/vendor/bin/phpinsights analyse --config-path=phpinsights.php --no-interaction",
+    "phpinsights": "vendor-bin/phpinsights/vendor/bin/phpinsights analyse --config-path=vendor-bin/phpinsights/phpinsights.php --no-interaction",
     "phplint": "vendor-bin/phplint/vendor/bin/phplint",
     "phploc": "vendor-bin/phploc/vendor/bin/phploc src --log-json var/reports/phploc.json",
     "phpmd": [

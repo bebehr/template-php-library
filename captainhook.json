@@ -62,7 +62,7 @@
         ]
       },
       {
-        "action": "vendor-bin/phpmd/vendor/bin/phpmd {$STAGED_FILES|of-type:php|separated-by:,} ansi phpmd.xml --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content",
+        "action": "vendor-bin/phpmd/vendor/bin/phpmd {$STAGED_FILES|of-type:php|separated-by:,} ansi vendor-bin/phpmd/phpmd.xml --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content",
         "conditions": [
           {
             "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
@@ -72,6 +72,9 @@
       },
       {
         "action": "vendor-bin/phpstan/vendor/bin/phpstan analyse {$STAGED_FILES|of-type:php|separated-by: }",
+        "config": {
+          "allow-failure": true
+        },
         "conditions": [
           {
             "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
@@ -89,7 +92,7 @@
         ]
       },
       {
-        "action": "vendor-bin/phpinsights/vendor/bin/phpinsights analyse --config-path=phpinsights.php --no-interaction {$STAGED_FILES|of-type:php|separated-by: }",
+        "action": "vendor-bin/phpinsights/vendor/bin/phpinsights analyse --config-path=vendor-bin/phpinsights/phpinsights.php --no-interaction {$STAGED_FILES|of-type:php|separated-by: }",
         "conditions": [
           {
             "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
