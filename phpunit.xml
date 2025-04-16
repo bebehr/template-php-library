@@ -24,6 +24,12 @@
     </include>
   </source>
 
+  <coverage>
+    <report>
+      <html outputDirectory="var/reports/phpunit/coverage"/>
+    </report>
+  </coverage>
+
   <logging>
     <junit outputFile="var/reports/phpunit/junit.xml"/>
     <testdoxHtml outputFile="var/reports/phpunit/testdox.html"/>
