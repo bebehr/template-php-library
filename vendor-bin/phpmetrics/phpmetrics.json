@@ -1,9 +1,9 @@
 {
   "includes": [
-    "src"
+    "../../src"
   ],
   "excludes": [],
   "report": {
-    "html": "var/reports/phpmetrics"
+    "html": "../../var/reports/phpmetrics"
   }
 }
