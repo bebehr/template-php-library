@@ -96,7 +96,7 @@
     ],
     "phpmd:ansi": "vendor-bin/phpmd/vendor/bin/phpmd . ansi phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content",
     "phpmd:html": "vendor-bin/phpmd/vendor/bin/phpmd . html phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --report-file var/reports/phpmd.html --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content --ignore-errors-on-exit --ignore-violations-on-exit",
-    "phpmetrics": "vendor-bin/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json",
+    "phpmetrics": "if [ -e var/reports/phpunit/junit.xml ]; then vendor-bin/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json --junit=var/reports/phpunit/junit.xml; else vendor-bin/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json; fi",
     "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse",
     "phpunit": "vendor/bin/phpunit",
     "psalm": [

@@ -5,10 +5,5 @@
   "excludes": [],
   "report": {
     "html": "var/reports/phpmetrics"
-  },
-  "plugins": {
-    "junit": {
-      "file": "var/reports/phpunit/junit.xml"
-    }
   }
 }
