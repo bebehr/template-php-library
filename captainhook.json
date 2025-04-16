@@ -18,6 +18,9 @@
     "enabled": true,
     "actions": [
       {
+        "action": "git diff --check"
+      },
+      {
         "action": "composer validate"
       },
       {
