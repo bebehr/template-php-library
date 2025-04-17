@@ -9,6 +9,9 @@
     // EditorConfig for VS Code
     "editorconfig.editorconfig",
 
+    // GitHub Actions
+    "github.vscode-github-actions",
+
     // PHPUnit Test Explorer
     "recca0120.vscode-phpunit"
   ]

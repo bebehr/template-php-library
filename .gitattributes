@@ -21,9 +21,10 @@ vendor-bin/**/composer.lock linguist-generated=true
 composer.lock               linguist-generated=true
 
 # Exclude files from exporting
-.vscode/*                   export-ignore
-tests/*                     export-ignore
-var/*                       export-ignore
+.github/                    export-ignore
+.vscode/                    export-ignore
+tests/                      export-ignore
+var/                        export-ignore
 vendor-bin/**/composer.lock export-ignore
 .editorconfig               export-ignore
 .gitattributes              export-ignore
