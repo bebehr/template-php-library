@@ -27,7 +27,7 @@
         "action": "composer normalize:check"
       },
       {
-        "action": "composer test"
+        "action": "composer phpunit"
       }
     ]
   },
