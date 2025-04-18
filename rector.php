@@ -10,7 +10,10 @@ return RectorConfig::configure()
         __DIR__ . '/tests',
     ])
     ->withPhpSets()
-    ->withPreparedSets(typeDeclarations: true)
-    ->withPreparedSets(deadCode: true)
     ->withPreparedSets(codeQuality: true)
-    ->withPreparedSets(codingStyle: true);
+    ->withPreparedSets(codingStyle: true)
+    ->withPreparedSets(deadCode: true)
+    ->withPreparedSets(naming: true)
+    ->withPreparedSets(privatization: true)
+    ->withPreparedSets(rectorPreset: true)
+    ->withPreparedSets(typeDeclarations: true);

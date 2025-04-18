@@ -14,17 +14,17 @@ use PHPUnit\Framework\TestCase;
  */
 final class GreeterTest extends TestCase
 {
-    private Generator $faker;
+    private Generator $generator;
 
     protected function setUp(): void
     {
-        $this->faker = Factory::create();
+        $this->generator = Factory::create();
     }
 
     public function testGreetsWithName(): void
     {
         $greeter = new Greeter();
-        $name = $this->faker->name();
+        $name = $this->generator->name();
 
         $greeting = $greeter->greet($name);
         $expected = sprintf('Hello, %s!', $name);
