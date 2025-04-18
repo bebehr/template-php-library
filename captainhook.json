@@ -44,7 +44,7 @@
         ]
       },
       {
-        "action": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -v --config=.php-cs-fixer.php --diff {$STAGED_FILES|of-type:php|separated-by: }",
+        "action": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -nv --config=.php-cs-fixer.php --diff --show-progress=none --ansi {$STAGED_FILES|of-type:php|separated-by: }",
         "conditions": [
           {
             "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
@@ -62,16 +62,7 @@
         ]
       },
       {
-        "action": "vendor-bin/phpmd/vendor/bin/phpmd {$STAGED_FILES|of-type:php|separated-by:,} ansi vendor-bin/phpmd/phpmd.xml --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content",
-        "conditions": [
-          {
-            "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
-            "args": ["php"]
-          }
-        ]
-      },
-      {
-        "action": "vendor-bin/phpstan/vendor/bin/phpstan analyse {$STAGED_FILES|of-type:php|separated-by: }",
+        "action": "vendor-bin/rector/vendor/bin/rector {$STAGED_FILES|of-type:php|separated-by: } --dry-run",
         "config": {
           "allow-failure": true
         },
@@ -83,7 +74,7 @@
         ]
       },
       {
-        "action": "vendor-bin/psalm/vendor/bin/psalm {$STAGED_FILES|of-type:php|separated-by: }",
+        "action": "vendor-bin/phpmd/vendor/bin/phpmd {$STAGED_FILES|of-type:php|separated-by:,} ansi vendor-bin/phpmd/phpmd.xml --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content",
         "conditions": [
           {
             "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
@@ -92,7 +83,28 @@
         ]
       },
       {
-        "action": "vendor-bin/phpinsights/vendor/bin/phpinsights analyse --config-path=vendor-bin/phpinsights/phpinsights.php --no-interaction {$STAGED_FILES|of-type:php|separated-by: }",
+        "action": "vendor-bin/phpstan/vendor/bin/phpstan analyse -n {$STAGED_FILES|of-type:php|separated-by: } --ansi",
+        "config": {
+          "allow-failure": true
+        },
+        "conditions": [
+          {
+            "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
+            "args": ["php"]
+          }
+        ]
+      },
+      {
+        "action": "vendor-bin/psalm/vendor/bin/psalm {$STAGED_FILES|of-type:php|separated-by: } --no-progress --output-format=compact",
+        "conditions": [
+          {
+            "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
+            "args": ["php"]
+          }
+        ]
+      },
+      {
+        "action": "vendor-bin/phpinsights/vendor/bin/phpinsights analyse -nv --config-path=vendor-bin/phpinsights/phpinsights.php --no-interaction --ansi {$STAGED_FILES|of-type:php|separated-by: }",
         "conditions": [
           {
             "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",

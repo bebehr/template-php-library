@@ -8,7 +8,6 @@
   findUnusedBaselineEntry="true"
   findUnusedCode="true"
   noCache="true"
-  autoloader="vendor-bin/php-cs-fixer/vendor/autoload.php"
 >
   <projectFiles>
     <directory name="."/>
@@ -17,6 +16,8 @@
       <directory name="var"/>
       <directory name="vendor"/>
       <directory name="vendor-bin"/>
+      <file name=".php-cs-fixer.php"/>
+      <file name="rector.php"/>
     </ignoreFiles>
   </projectFiles>
 

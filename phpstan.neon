@@ -11,4 +11,6 @@ parameters:
       - .vscode
       - var
       - vendor-bin
+      - .php-cs-fixer.php
+      - rector.php
   tmpDir: var/cache/phpstan

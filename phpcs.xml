@@ -6,8 +6,8 @@
 >
   <description>Custom coding standard for PHP_CodeSniffer</description>
 
-  <!-- Check for cross-version support for PHP 8.1 and higher. -->
-  <config name="testVersion" value="8.1-"/>
+  <!-- Check for cross-version support for PHP 8.1 to 8.3 -->
+  <config name="testVersion" value="8.1-8.3"/>
 
   <!-- Paths to check -->
   <file>.</file>
@@ -24,8 +24,8 @@
   <arg name="parallel" value="2"/>
   <arg name="report" value="full,summary,source"/>
 
-  <!-- Show sniff error codes in all reports and show progress -->
-  <arg value="sp"/>
+  <!-- Show sniff error codes in all reports -->
+  <arg value="s"/>
 
   <!-- Run against the PHPCompatibility ruleset -->
   <rule ref="PHPCompatibility"/>

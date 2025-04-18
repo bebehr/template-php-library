@@ -17,10 +17,6 @@ $rules = [
     '@PHPUnit100Migration:risky' => true,
     '@PER-CS' => true,
     '@PER-CS:risky' => true,
-    'general_phpdoc_annotation_remove' => [
-        'annotations' => ['expectedDeprecation'],
-    ],
-    'modernize_strpos' => true,
     'ordered_imports' => [
         'imports_order' => ['class', 'function', 'const'],
         'sort_algorithm' => 'alpha',

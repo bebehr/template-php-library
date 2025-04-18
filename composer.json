@@ -54,6 +54,7 @@
       "if [ -e vendor/bin/captainhook ]; then vendor/bin/captainhook install -f -s; fi"
     ],
     "analyse": [
+      "@rector",
       "@phpcpd",
       "@phpmd:ansi",
       "@phpstan",
@@ -71,7 +72,8 @@
       "@normalize:fix",
       "@php-cs-fixer:fix",
       "@phplint",
-      "@phpcbf"
+      "@phpcbf",
+      "@rector:fix"
     ],
     "metrics": [
       "@phploc",
@@ -82,13 +84,13 @@
     "normalize:check": "composer bin composer-normalize normalize --diff --dry-run --indent-size=2 --indent-style=space --ansi ../../composer.json",
     "normalize:fix": "composer bin composer-normalize normalize --diff --indent-size=2 --indent-style=space --ansi ../../composer.json",
     "pdepend": "vendor-bin/phpmd/vendor/bin/pdepend --summary-xml=var/reports/pdepend.summary.xml --jdepend-chart=var/reports/pdepend.chart.svg --overview-pyramid=var/reports/pdepend.overview.svg src",
-    "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -v --diff --ansi",
-    "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -v --diff --ansi",
+    "php-cs-fixer:check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer check -nv --diff --show-progress=none --ansi",
+    "php-cs-fixer:fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix -nv --diff --show-progress=none --ansi",
     "phpcbf": "vendor-bin/phpcs/vendor/bin/phpcbf",
     "phpcpd": "vendor-bin/phpcpd/vendor/bin/phpcpd --fuzzy src tests",
     "phpcs": "vendor-bin/phpcs/vendor/bin/phpcs",
-    "phpinsights": "vendor-bin/phpinsights/vendor/bin/phpinsights analyse -v --config-path=vendor-bin/phpinsights/phpinsights.php --ansi --no-interaction",
-    "phplint": "vendor-bin/phplint/vendor/bin/phplint --ansi",
+    "phpinsights": "vendor-bin/phpinsights/vendor/bin/phpinsights analyse -nv --config-path=vendor-bin/phpinsights/phpinsights.php --ansi",
+    "phplint": "vendor-bin/phplint/vendor/bin/phplint --no-progress --ansi",
     "phploc": "vendor-bin/metrics/vendor/bin/phploc src --log-json var/reports/phploc.json",
     "phpmd": [
       "@phpmd:html",
@@ -97,13 +99,15 @@
     "phpmd:ansi": "vendor-bin/phpmd/vendor/bin/phpmd . ansi vendor-bin/phpmd/phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content",
     "phpmd:html": "vendor-bin/phpmd/vendor/bin/phpmd . html vendor-bin/phpmd/phpmd.xml --exclude .vscode/*,var/*,vendor/*,vendor-bin/* --report-file var/reports/phpmd.html --cache --cache-file var/cache/.phpmd.result-cache.php --cache-strategy content --ignore-errors-on-exit --ignore-violations-on-exit",
     "phpmetrics": "if [ -e var/reports/phpunit/junit.xml ]; then vendor-bin/metrics/vendor/bin/phpmetrics --config=vendor-bin/metrics/phpmetrics.json --junit=var/reports/phpunit/junit.xml; else vendor-bin/metrics/vendor/bin/phpmetrics --config=vendor-bin/metrics/phpmetrics.json; fi",
-    "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse --ansi",
-    "phpunit": "vendor/bin/phpunit --testsuite unit --no-coverage",
-    "phpunit:coverage": "vendor/bin/phpunit --testsuite unit",
+    "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan analyse -n --ansi",
+    "phpunit": "vendor/bin/phpunit --testsuite unit --colors=always --no-progress --no-coverage",
+    "phpunit:coverage": "vendor/bin/phpunit --testsuite unit --colors=always --no-progress",
     "psalm": [
-      "vendor-bin/psalm/vendor/bin/psalm",
-      "vendor-bin/psalm/vendor/bin/psalm --taint-analysis"
+      "vendor-bin/psalm/vendor/bin/psalm --no-progress --output-format=compact",
+      "vendor-bin/psalm/vendor/bin/psalm --no-progress --output-format=compact --taint-analysis"
     ],
+    "rector": "vendor-bin/rector/vendor/bin/rector process --dry-run --ansi",
+    "rector:fix": "vendor-bin/rector/vendor/bin/rector process --ansi",
     "test": [
       "@test:unit"
     ],

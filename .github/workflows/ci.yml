@@ -38,7 +38,7 @@ jobs:
       # 1.2 - Build Application
 
       - name: Validate composer.json and composer.lock
-        run: composer validate --strict
+        run: composer validate --strict --ansi
 
       - name: Cache Composer packages
         id: composer-cache
@@ -50,13 +50,13 @@ jobs:
             ${{ runner.os }}-php-
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
+        run: composer install --prefer-dist --no-progress --ansi
 
       - name: Normalize composer
         run: composer run-script normalize:check
 
       - name: Composer audit
-        run: composer audit
+        run: composer audit --ansi
 
       # 2 - Code Analysis
 
