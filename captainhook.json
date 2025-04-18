@@ -63,13 +63,17 @@
       },
       {
         "action": "vendor-bin/rector/vendor/bin/rector {$STAGED_FILES|of-type:php|separated-by: } --dry-run",
-        "config": {
-          "allow-failure": true
-        },
         "conditions": [
           {
             "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
             "args": ["php"]
+          },
+          {
+            "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\InDirectory",
+            "args": [
+              "src/",
+              "tests/"
+            ]
           }
         ]
       },
@@ -84,13 +88,17 @@
       },
       {
         "action": "vendor-bin/phpstan/vendor/bin/phpstan analyse -n {$STAGED_FILES|of-type:php|separated-by: } --ansi",
-        "config": {
-          "allow-failure": true
-        },
         "conditions": [
           {
             "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
             "args": ["php"]
+          },
+          {
+            "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\InDirectory",
+            "args": [
+              "src/",
+              "tests/"
+            ]
           }
         ]
       },
