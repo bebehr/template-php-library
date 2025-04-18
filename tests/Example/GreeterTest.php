@@ -33,12 +33,41 @@ final class GreeterTest extends TestCase
         self::assertSame($expected, $greeting);
     }
 
-    public function testGreetWithEmptyNameThwowsException(): void
+    #[\PHPUnit\Framework\Attributes\DataProvider('nameProvider')]
+    public function testGreetWithNameByProvider(
+        string $name,
+        string $expectedName,
+    ): void {
+        $greeter = new Greeter();
+
+        $greeting = $greeter->greet($name);
+
+        $expected = sprintf('Hello, %s!', $expectedName);
+        self::assertSame($expected, $greeting);
+    }
+
+    public function testGreetWithEmptyNameThrowsException(): void
     {
         $greeter = new Greeter();
         $name = '';
 
         self::expectException(InvalidArgumentException::class);
         $greeter->greet($name);
+    }
+
+    /**
+     * @api
+     * @return list<array<int, string>>
+     */
+    public static function nameProvider(): array
+    {
+        $generator = Factory::create();
+        $name = [];
+        for ($i = 0; $i <= 4; ++$i) {
+            $value = $generator->name();
+            $name[] = [$value, $value];
+        }
+
+        return $name;
     }
 }
