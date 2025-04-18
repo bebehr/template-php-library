@@ -54,7 +54,6 @@
       "if [ -e vendor/bin/captainhook ]; then vendor/bin/captainhook install -f -s; fi"
     ],
     "analyse": [
-      "@rector",
       "@phpcpd",
       "@phpmd:ansi",
       "@phpstan",
