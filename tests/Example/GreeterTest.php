@@ -27,7 +27,7 @@ final class GreeterTest extends TestCase
         $name = $this->faker->name();
 
         $greeting = $greeter->greet($name);
-        $expected = "Hello, {$name}!";
+        $expected = sprintf('Hello, %s!', $name);
 
         self::assertSame($expected, $greeting);
     }

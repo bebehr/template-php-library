@@ -106,8 +106,8 @@
       "vendor-bin/psalm/vendor/bin/psalm --no-progress --output-format=compact",
       "vendor-bin/psalm/vendor/bin/psalm --no-progress --output-format=compact --taint-analysis"
     ],
-    "rector": "vendor-bin/rector/vendor/bin/rector process --dry-run --ansi",
-    "rector:fix": "vendor-bin/rector/vendor/bin/rector process --ansi",
+    "rector": "vendor-bin/rector/vendor/bin/rector process --dry-run --no-progress-bar --ansi",
+    "rector:fix": "vendor-bin/rector/vendor/bin/rector process --no-progress-bar --ansi",
     "test": [
       "@test:unit"
     ],

@@ -62,7 +62,7 @@
         ]
       },
       {
-        "action": "vendor-bin/rector/vendor/bin/rector {$STAGED_FILES|of-type:php|separated-by: } --dry-run",
+        "action": "vendor-bin/rector/vendor/bin/rector {$STAGED_FILES|of-type:php|separated-by: } --dry-run --no-progress-bar",
         "conditions": [
           {
             "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
