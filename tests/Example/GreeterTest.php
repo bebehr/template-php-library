@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Bebehr\TemplatePhpLibrary\Tests\Example;
 
 use Bebehr\TemplatePhpLibrary\Example\Greeter;
-use Faker\Factory;
-use Faker\Generator;
+use Bebehr\TemplatePhpLibrary\Tests\DataProviders\NameProvider;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,32 +15,19 @@ use PHPUnit\Framework\TestCase;
  */
 final class GreeterTest extends TestCase
 {
-    private Generator $generator;
+    private Greeter $greeter;
 
     protected function setUp(): void
     {
-        $this->generator = Factory::create();
+        $this->greeter = new Greeter();
     }
 
-    public function testGreetWithName(): void
-    {
-        $greeter = new Greeter();
-        $name = $this->generator->name();
-
-        $greeting = $greeter->greet($name);
-
-        $expected = sprintf('Hello, %s!', $name);
-        self::assertSame($expected, $greeting);
-    }
-
-    #[\PHPUnit\Framework\Attributes\DataProvider('nameProvider')]
-    public function testGreetWithNameByProvider(
+    #[DataProviderExternal(NameProvider::class, 'getNames')]
+    public function testGreetsWithName(
         string $name,
         string $expectedName,
     ): void {
-        $greeter = new Greeter();
-
-        $greeting = $greeter->greet($name);
+        $greeting = $this->greeter->greet($name);
 
         $expected = sprintf('Hello, %s!', $expectedName);
         self::assertSame($expected, $greeting);
@@ -48,26 +35,9 @@ final class GreeterTest extends TestCase
 
     public function testGreetWithEmptyNameThrowsException(): void
     {
-        $greeter = new Greeter();
         $name = '';
 
         self::expectException(InvalidArgumentException::class);
-        $greeter->greet($name);
-    }
-
-    /**
-     * @api
-     * @return list<array<int, string>>
-     */
-    public static function nameProvider(): array
-    {
-        $generator = Factory::create();
-        $name = [];
-        for ($i = 0; $i <= 4; ++$i) {
-            $value = $generator->name();
-            $name[] = [$value, $value];
-        }
-
-        return $name;
+        $this->greeter->greet($name);
     }
 }
