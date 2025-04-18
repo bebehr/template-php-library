@@ -58,7 +58,8 @@
       "@phpmd:ansi",
       "@phpstan",
       "@psalm",
-      "@phpinsights"
+      "@phpinsights",
+      "@rector"
     ],
     "analyze": [
       "@analyse"
