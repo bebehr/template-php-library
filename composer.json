@@ -55,7 +55,7 @@
     ],
     "analyse": [
       "@phpcpd",
-      "@phpmd",
+      "@phpmd:ansi",
       "@phpstan",
       "@psalm",
       "@phpinsights"
@@ -63,19 +63,20 @@
     "analyze": [
       "@analyse"
     ],
+    "codestyle": [
+      "@php-cs-fixer:check",
+      "@phpcs"
+    ],
     "fix": [
       "@normalize:fix",
       "@php-cs-fixer:fix",
       "@phplint",
       "@phpcbf"
     ],
-    "codestyle": [
-      "@php-cs-fixer:check",
-      "@phpcs"
-    ],
     "metrics": [
       "@phploc",
       "@pdepend",
+      "@phpmd",
       "@phpmetrics"
     ],
     "normalize:check": "composer bin composer-normalize normalize --diff --dry-run --indent-size=2 --indent-style=space ../../composer.json",
